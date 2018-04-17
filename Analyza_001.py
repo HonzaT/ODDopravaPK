@@ -15,9 +15,9 @@ def histDevIDVehType(df, list_of_devices, vehicle_type, title):
     print('Analysis DOPR_D - Selecting relevant records.')
 
     valid = df.loc[df['Stav'] != 1]     # In actual data as of today are all records with Stav=0 (conflict with documentation)
-    radar = valid.loc[valid['IdDetektor'].isin(list_of_devices)]
-    trucks = radar.loc[radar['TypVozidla'] == vehicle_type]
-    values = trucks["Rychlost"]
+    devices = valid.loc[valid['IdDetektor'].isin(list_of_devices)]
+    vehicles = devices.loc[devices['TypVozidla'] == vehicle_type]
+    values = vehicles["Rychlost"]
     print('Analysis DOPR_D - Relevant records selected.')
 
     if len(values) > 0:
@@ -56,6 +56,7 @@ histDevIDVehType(df01, ['10059001', '10059101' ,'10059201'], 4, 'Truck')
 
 print('-------------------------------------------------------------------')
 print('Analysis DOPR_D - Finished.')
+
 #
 # STOUPA
 #
