@@ -1,3 +1,7 @@
+## @package Analyza_001
+#  Documentation for this module.
+#
+#  More details.
 import os
 import pandas as pd
 import numpy as np
@@ -7,9 +11,17 @@ INDIR  = r'..\ODDopravaPK-work_data\in\DOPR_D_20180412'
 OUTDIR = r'..\ODDopravaPK-work_data\out\DOPR_D_20180412'
 
 def readDataFrame(path_to_file):
+    ## Documentation for a function.
+    #
+    #  Returns a DataFrame constructed from data in the text file.
     return pd.read_table(path_to_file, sep='|', low_memory=False)
 
 def histDevIDVehType(df, list_of_devices, vehicle_type, title):
+    ## Generate Speed histogram for particulat device class from specified vehicle clases.
+    #
+    #  Selects data corresponding to specified devices and vehicle class.
+    #  Generates a histogram of speed measurement based on selection.
+    #
     # Reference: https://erikrood.com/Python_References/rows_cols_python.html
     print('-------------------------------------------------------------------')
     print('Analysis DOPR_D - Selecting relevant records.')
