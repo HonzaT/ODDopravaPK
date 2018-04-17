@@ -16,6 +16,22 @@ def readDataFrame(path_to_file):
     #  Returns a DataFrame constructed from data in the text file.
     return pd.read_table(path_to_file, sep='|', low_memory=False)
 
+def saveHistogram(file_name, values, title='Title', ylabel='YLabel', xlabel='XLabel', bins=np.arange(start=1, stop=151, step=5), figsize=(10.7,7.3)):
+    ## Create and save histogram..
+    #
+    #  Selects data corresponding to specified devices and vehicle class.
+    #  Generates a histogram of speed measurement based on selection.
+    values.plot.hist(bins,figsize)
+    plt.yscale('log', nonposy='clip')
+
+    plt.ylabel("Qty")
+    plt.xlabel("Speed [km/h]")
+    plt.title(title)
+
+    plt.savefig(file_name)
+    plt.close()
+
+
 def histDevIDVehType(df, list_of_devices, vehicle_type, title):
     ## Generate Speed histogram for particulat device class from specified vehicle clases.
     #
@@ -35,15 +51,18 @@ def histDevIDVehType(df, list_of_devices, vehicle_type, title):
     if len(values) > 0:
         print('Analysis DOPR_D - Ready to plot the histogram.')
 
-        values.plot.hist(bins=np.arange(start=1, stop=151, step=5),figsize=(10.7,7.3))
-        plt.yscale('log', nonposy='clip')
+#        values.plot.hist(bins=np.arange(start=1, stop=151, step=5),figsize=(10.7,7.3))
+#        plt.yscale('log', nonposy='clip')
 
-        plt.ylabel("Qty")
-        plt.xlabel("Speed [km/h]")
-        plt.title(title)
+#        plt.ylabel("Qty")
+#        plt.xlabel("Speed [km/h]")
+#        plt.title(title)
 
-        plt.savefig(OUTDIR + r'\\' + title + '_Rychlost.png')
-        plt.close()
+#        plt.savefig(OUTDIR + r'\\' + title + '_Rychlost.png')
+#        plt.close()
+
+        saveHistogram(OUTDIR + r'\\' + title + '_Rychlost.png', values, title=title, ylabel="Qty", xlabel="Speed [km/h]")
+
         print('Analysis DOPR_D - Histogram stored.')
     else:
         print('Analysis DOPR_D - No values left to plot the histogram.')
