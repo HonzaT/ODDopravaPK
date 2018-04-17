@@ -1,0 +1,2 @@
+Name|Town|Street|IdDevice|IdArea
+Název radaru|Obec|Ulice|IdDevice - kódové označení měřiče (po odmazání KP slouží ke konstrukci IdDevice - 10 + (IdDevice - "KP") + "00"(Radar)/"10"(Videodtekce)/"20"(Kamera) + Směr (1 = ve směru, 2 = v protisměru)|IdArea - okres? Nebo jiné označení oblasti?
